@@ -63,7 +63,7 @@ public class RabbitMqConfig {
     @Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
     public RabbitTemplate rabbitTemplate() {
         RabbitTemplate rabbitTemplate = new RabbitTemplate(connectionFactory());
-        rabbitTemplate.setMessageConverter(this.jsonMessageConverter());
+        rabbitTemplate.setMessageConverter(this.messageConverter());
         return rabbitTemplate;
     }
 
@@ -88,8 +88,13 @@ public class RabbitMqConfig {
         return BindingBuilder.bind(queue()).to(exchange());
     }
 
+    /**
+     * 指定消息序列化
+     *
+     * @return
+     */
     @Bean
-    public MessageConverter jsonMessageConverter() {
+    public MessageConverter messageConverter() {
         return new Jackson2JsonMessageConverter();
     }
 
