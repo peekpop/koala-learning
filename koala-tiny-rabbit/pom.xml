@@ -16,6 +16,7 @@
 
     <modules>
         <module>koala-rabbit-provider</module>
+        <module>koalal-rabbit-consumer</module>
     </modules>
 
 </project>
