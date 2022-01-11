@@ -13,6 +13,7 @@
 
     <modules>
         <module>koala-tiny-rabbit</module>
+        <module>koala-common</module>
     </modules>
 
     <!--统一版本管理-->
