@@ -4,9 +4,7 @@ import org.apache.commons.io.IOUtils;
 import org.json.JSONObject;
 import org.json.XML;
 
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 
 /**
  * XML转jsong工具类
@@ -21,8 +19,13 @@ public class XmlToJsonUtil {
      */
     public static String xmlToJsonByPath(String path) {
         File file = new File(path);
-        JSONObject jsonObject = XML.toJSONObject(file.toString());
-        return jsonObject.toString();
+        InputStream inputStream = null;
+        try {
+            inputStream = new FileInputStream(file);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        return xmlToJsonByInputStream(inputStream);
     }
 
     /**
