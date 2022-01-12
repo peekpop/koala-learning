@@ -8,10 +8,10 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>koalal-common-tools</artifactId>
+    <artifactId>koala-common-tools</artifactId>
     <packaging>jar</packaging>
 
-    <name>koalal-common-tools</name>
+    <name>koala-common-tools</name>
     <description>工具类</description>
 
     <!--依赖配置-->
