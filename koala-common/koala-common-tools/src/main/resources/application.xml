@@ -1,9 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<packageinfo docVersion="0.5.0">
-    <package type="IarrmPlugin"/>
-    <params>
-        <param id="id" value="assuse"/>
-        <param id="version" value="2.0.0"/>
-        <param id="type" value="1"/>
-    </params>
-</packageinfo>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:lang="http://www.springframework.org/schema/lang"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+           http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.0.xsd
+           http://www.springframework.org/schema/lang http://www.springframework.org/schema/lang/spring-lang-2.0.xsd
+           http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.0.xsd
+           http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd"
+	default-autowire="byName">
+
+	<bean id="eventParser" parent="baseEventParser">
+		<!--表结构相关-->
+		<property name="enableTsdb" value="${canal.instance.tsdb.enable:true}"/>
+		<property name="tsdbSpringXml" value="${canal.instance.tsdb.spring.xml:}"/>
+		<property name="tsdbSnapshotInterval" value="${canal.instance.tsdb.snapshot.interval:24}" />
+		<property name="tsdbSnapshotExpire" value="${canal.instance.tsdb.snapshot.expire:360}" />
+	</bean>
+</beans>
